@@ -145,6 +145,8 @@ vhostcreate_mod()
 		chmod 755 $CONFIG
 
 		# create symlink to enable site
+		echo "symlink"
+		echo $CONFIG $NGINX_SITES_ENABLED/$DOMAIN.conf
 		ln -s $CONFIG $NGINX_SITES_ENABLED/$DOMAIN.conf
 
 		echo -e "\e[1;36m> \e[0mSite Created for $DOMAIN"
@@ -156,6 +158,10 @@ CFvhostcreate_mod()
 		if [ "$org_v" == "1" ] && [ "$vhost_template" == "CF" ]
 		then
 		cp $CURRENT_DIR/templates/orgv1_cf.template $CONFIG
+		echo "vars"
+		echo $CURRENT_DIR
+		echo $NGINX_LOC
+		echo $DOMAIN
 		cp -a $CURRENT_DIR/config/cf/. $NGINX_LOC/config
 		mv $NGINX_LOC/config/domain.com.conf $NGINX_LOC/config/$DOMAIN.conf
 		mv $NGINX_LOC/config/domain.com_ssl.conf $NGINX_LOC/config/${DOMAIN}_ssl.conf

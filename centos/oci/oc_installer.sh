@@ -158,10 +158,6 @@ CFvhostcreate_mod()
 		if [ "$org_v" == "1" ] && [ "$vhost_template" == "CF" ]
 		then
 		cp $CURRENT_DIR/templates/orgv1_cf.template $CONFIG
-		echo "vars"
-		echo $CURRENT_DIR
-		echo $NGINX_LOC
-		echo $DOMAIN
 		cp -a $CURRENT_DIR/config/cf/. $NGINX_LOC/config
 		mv $NGINX_LOC/config/domain.com.conf $NGINX_LOC/config/$DOMAIN.conf
 		mv $NGINX_LOC/config/domain.com_ssl.conf $NGINX_LOC/config/${DOMAIN}_ssl.conf
@@ -171,6 +167,11 @@ CFvhostcreate_mod()
 
 		elif [ "$org_v" == "2" ] && [ "$vhost_template" == "CF" ]
 		then
+		echo "vars"
+		echo $CURRENT_DIR
+		echo $NGINX_LOC
+		echo $DOMAIN
+		echo "moving files"
 		cp $CURRENT_DIR/templates/orgv2_cf.template $CONFIG
 		cp -a $CURRENT_DIR/config/cf/. $NGINX_LOC/config
 		mv $NGINX_LOC/config/domain.com.conf $NGINX_LOC/config/$DOMAIN.conf
